@@ -19,10 +19,16 @@ const client = new Client({
 (client as any).commands = new Map();
 
 client.on(Events.ClientReady, () => {
-    (client as any).commands.set('slack-emoji', {
+    /*(client as any).commands.set('slack-emoji', {'slack-emoji', {
         data: new SlashCommandBuilder().setName('slack-emoji')
         .setDescription('get slack emoji +100 aura')
-    })
+    })*/
+    client?.application?.commands.set([
+        {
+            name: 'slack-emoji',
+            description: 'get slack emoji +100 aura',
+        }
+    ])
 })
 
 client.on(Events.InteractionCreate, async (interaction) => {
@@ -31,7 +37,6 @@ client.on(Events.InteractionCreate, async (interaction) => {
     if (!(client as any).commands.get(interaction.commandName)) { console.error("Command name null bozo"); return;}
 
     try {
-
         if (interaction.commandName === 'slack-emoji') {
             await getEmoji();
         }
