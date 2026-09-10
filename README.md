@@ -19,4 +19,5 @@ Uses the endpoint [badger.hackclub.dev](https://badger.hackclub.dev/emoji)
 ## Tech Stack
 Deno & probably Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man.
 
-Make a `.env` file and put your token in a variable named `DISCORD_TOKEN`
+Make a `.env` file and put your token in a variable named `DISCORD_TOKEN`. Currently single file, the discord.js docs might hate me.
+
