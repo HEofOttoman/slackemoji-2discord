@@ -14,7 +14,7 @@ const client = new Client({
 client.once('ready', async () => {
     const data = [
         new SlashCommandBuilder()
-            .setName('slack-emoji')
+            .setName('sslack-emoji')
             .setDescription('Get a slack emoji by name')
     ];
     
@@ -26,11 +26,12 @@ const commands = [];
 client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isCommand()) return;
 
-    const commandNombre = interaction.commands.get(interaction.commandName);
+    // const commandNombre = interaction.get(interaction.commandName);
+    const commandNombre = 'slack-emoji';
     if (!commandNombre) { console.error("Command name null bozo"); return;}
 
     try {
-        await commandNombre.execute(interaction)
+        // await commandNombre.execute(interaction)
         console.log(`Command received: ${commandNombre}`);
     } catch (error) {
         console.error(error);
