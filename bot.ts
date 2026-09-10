@@ -2,7 +2,7 @@
 import process from "node:process";
 import { Client, SlashCommandBuilder, Events, GatewayIntentBits } from "discord.js";
 
-const DiscordToken = process.env.DISCORD_TOKEN;
+// const DiscordToken = process.env.DISCORD_TOKEN;
 
 const client = new Client({
     
@@ -11,32 +11,38 @@ const client = new Client({
     ]
 });
 
-client.once('ready', async () => {
-    const data = [
-        new SlashCommandBuilder()
-            .setName('sslack-emoji')
-            .setDescription('Get a slack emoji by name')
-    ];
-    
-    await client.application?.commands.set(data);
-});
+(client as any).commands = new Map();
 
-const commands = [];
+client.on(Events.ClientReady, () => {
+    (client as any).commands.set('slack-emoji', {
+        data: new SlashCommandBuilder().setName('slack-emoji')
+        .setDescription('get slack emoji +100 aura')
+    })
+
+
+})
 
 client.on(Events.InteractionCreate, async (interaction) => {
-    if (!interaction.isCommand()) return;
+    if (!interaction.isChatInputCommand()) return;
 
-    // const commandNombre = interaction.get(interaction.commandName);
-    const commandNombre = 'slack-emoji';
-    if (!commandNombre) { console.error("Command name null bozo"); return;}
+    if (!(client as any).commands.get(interaction.commandName)) { console.error("Command name null bozo"); return;}
 
     try {
-        // await commandNombre.execute(interaction)
-        console.log(`Command received: ${commandNombre}`);
+
+        if (interaction.commandName === 'slack-emoji') {
+            await getEmoji();
+        }
+
     } catch (error) {
         console.error(error);
     }
 });
+
+async function getEmoji() {
+    const EVERYemoji = await fetch('https://badger.hackclub.dev/emojis');
+
+
+}
 
 client.once(Events.ClientReady, (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
