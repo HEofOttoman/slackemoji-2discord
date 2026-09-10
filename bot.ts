@@ -1,8 +1,13 @@
-
+import "@std/dotenv/load"; 
+// This is what makes .env work like this
 import process from "node:process";
 import { Client, SlashCommandBuilder, Events, GatewayIntentBits } from "discord.js";
 
-// const DiscordToken = process.env.DISCORD_TOKEN;
+const DiscordToken = process.env.DISCORD_TOKEN;
+
+if (!DiscordToken) { // Missing env safeguard
+  throw new Error("Missing env variables.");
+}
 
 const client = new Client({
     
@@ -18,8 +23,6 @@ client.on(Events.ClientReady, () => {
         data: new SlashCommandBuilder().setName('slack-emoji')
         .setDescription('get slack emoji +100 aura')
     })
-
-
 })
 
 client.on(Events.InteractionCreate, async (interaction) => {
@@ -39,9 +42,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 async function getEmoji() {
-    const EVERYemoji = await fetch('https://badger.hackclub.dev/emojis');
+    const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis')).json;
 
-
+    // EVERYemoji.find
 }
 
 client.once(Events.ClientReady, (readyClient) => {
