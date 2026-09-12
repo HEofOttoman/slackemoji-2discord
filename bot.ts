@@ -44,7 +44,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
     try {
         if (interaction.commandName === 'slack-emoji') {
-            await getEmoji();
+            const requestedEmoji = interaction.options.getString('emoji-name');
+            await getEmoji(requestedEmoji);
             await interaction.reply(`Hi ${interaction.user.username}, I don't have the image yet`);
         }
 
@@ -53,9 +54,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
     }
 });
 
-async function getEmoji() {
+async function getEmoji(emojiName: string) {
     try {
         const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
+
 
     // EVERYemoji.find
     } catch (error) {console.error(error)}

@@ -16,6 +16,11 @@ This is simple enough, surprised it doesn't exist yet. Probably does and I don't
 
 Uses the endpoint [badger.hackclub.dev](https://badger.hackclub.dev/emoji)
 
+Okay I learnt I can't send messages *as* a user so you'll have to copy the link of the image fetched by the `/` command.
+
+1. Run command, `/slack-emoji`, name on it
+2. Copy the link that shows up for it
+
 ## Tech Stack
 Deno & probably Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man.
 
