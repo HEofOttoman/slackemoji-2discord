@@ -45,6 +45,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     try {
         if (interaction.commandName === 'slack-emoji') {
             const requestedEmoji = interaction.options.getString('emoji-name');
+            if (!requestedEmoji) {return};
             await getEmoji(requestedEmoji);
             await interaction.reply(`Hi ${interaction.user.username}, I don't have the image yet`);
         }
