@@ -1,13 +1,16 @@
-import { SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export default {
     data: new SlashCommandBuilder()
-        .setName('slack-emoji')
-        .setDescription('Get a slack emoji by name'),
-    async execute(emojiname: string) {
-        await fetch("https://badger.hackclub.dev/emoji");
-        const reqURL = getEmoji(emojiname)
-        
+        .setName('slack-emoji')        .setDescription('Get a slack emoji by name (+100 aura super tuff)')
+        .addUserOption((option) => option.setName('emoji-name').setDescription('The name of the emoji to send (without colons)').setRequired(true)),
+    async execute(interaction: ChatInputCommandInteraction) {
+        // await fetch("https://badger.hackclub.dev/emoji");
+        const emojiName = interaction.options.getString('emoji-name');
+        if (!emojiName) {return};
+
+        const reqURL = getEmoji(emojiName)
+        interaction.reply(`${reqURL}`);
     }
 }
 

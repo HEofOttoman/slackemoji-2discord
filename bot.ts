@@ -3,6 +3,8 @@ import "@std/dotenv/load";
 import process from "node:process";
 import { Client, SlashCommandBuilder, Events, GatewayIntentBits } from "discord.js";
 
+import "./commands/slack-emoji.ts";
+
 const DiscordToken = process.env.DISCORD_TOKEN;
 
 if (!DiscordToken) { // Missing env safeguard
