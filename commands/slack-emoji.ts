@@ -10,7 +10,7 @@ export default {
         if (!emojiName) {return};
 
         const reqURL = await getEmoji(emojiName);
-        // interaction.reply(`${reqURL}`); // sends real thing as bot
+        interaction.reply(`${reqURL}`); // sends real thing as bot
         interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
 
     }
@@ -30,8 +30,3 @@ async function getEmoji(emojiName: string) {
     // EVERYemoji.find
     } catch (error) {console.error(error);}
 }
-
-/*const data = new SlashCommmandBuilder()
-    .setName('slack-emoji')
-    .setDescription('Get a slack emoji by name');
-*/

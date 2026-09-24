@@ -3,9 +3,6 @@ import "@std/dotenv/load";
 import process from "node:process";
 import { Client, SlashCommandBuilder as _SlashCommandBuilder, Events, GatewayIntentBits, CommandInteraction as _CommandInteraction } from "discord.js";
 
-import "./commands/slack-emoji.ts";
-import slackEmojiCommand from "./commands/slack-emoji.ts";
-
 const DiscordToken = process.env.DISCORD_TOKEN;
 
 if (!DiscordToken) { // Missing env safeguard
@@ -16,22 +13,15 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds   ]
 });
 
-// (client as any).commands = new Map();
-// (client as any).commands = [];
-
+import slackEmojiCommand from "./commands/slack-emoji.ts";
 // Register commands
 client.on(Events.ClientReady, async () => {
-    // try {client.application?.commands.set(commandsToRegister);} catch (error) {console.error(error);};
     try {await client.application?.commands.set([slackEmojiCommand.data.toJSON()]);} catch (error) {console.error(error);};
     
 })
 
 client.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
-
-    // if (!(client as any).commands.get(interaction.commandName)) { console.error("Command name null bozo"); return;}
-    // if (!client.application?.commands.fetch(interaction.commandName)) { console.error("Command name null bozo"); return;}
-    // Null check (doesn't work)
 
     try {
         if (interaction.commandName === 'slack-emoji') {
@@ -46,19 +36,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
     }
 });
 
-/*async function getEmoji(emojiName: string) {
-    try {
-        // const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
-        const emojiRes = await fetch(`https://cachet.hackclub.com/emojis/${emojiName}`);
-        const emoji = await emojiRes.json();
-        return emoji.imageURL;
-
-    // EVERYemoji.find
-    } catch (error) {console.error(error)}
-}*/
-
 client.once(Events.ClientReady, (readyClient) => {
-    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    console.log(`I'M IN! Logged in as ${readyClient.user.tag}`);
 });
 
 client.login(DiscordToken);

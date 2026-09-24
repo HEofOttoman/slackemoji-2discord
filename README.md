@@ -15,15 +15,16 @@ This bot, which is installed as a Discord selfbot (using the Slack analogy), all
 
 This is simple enough, surprised it doesn't exist yet. Probably does and I don't know about it yet.
 
-Uses the [cachet](https://cachet.hackclub.com) fetch emoji endpoint
+## Tech Stack
+Deno & Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man. Uses the [cachet](https://cachet.hackclub.com) endpoint to fetch emoji.
+
+
+Make a `.env` file and put your token in a variable named `DISCORD_TOKEN`. Currently single file, the discord.js docs might hate me.
+
+
+## Usage
 
 Okay I learnt I can't send messages *as* a user so you'll have to copy the link of the image fetched by the `/` command.
 
 1. Run command, `/slack-emoji`, name on it
 2. Copy the link that shows up for it
-
-## Tech Stack
-Deno & Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man.
-
-Make a `.env` file and put your token in a variable named `DISCORD_TOKEN`. Currently single file, the discord.js docs might hate me.
-
