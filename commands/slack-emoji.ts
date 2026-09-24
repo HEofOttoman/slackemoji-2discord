@@ -10,8 +10,8 @@ export default {
         if (!emojiName) {return};
 
         const reqURL = await getEmoji(emojiName);
-        interaction.reply(`${reqURL}`);
-        // interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `})
+        // interaction.reply(`${reqURL}`); // sends real thing as bot
+        interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
 
     }
 }
@@ -21,15 +21,14 @@ interface emojiResponse {
 }
 
 async function getEmoji(emojiName: string) {
-    const emojis = await fetch("https://badger.hackclub.dev/emoji");
-    // const links = JSON.stringify(emojis);
-    // const link = JSON.parse(links);
-    const emoji = await emojis.json();
+    try {
+        // const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
+        const emojiRes = await fetch(`https://cachet.hackclub.com/emojis/${emojiName}`);
+        const emoji = await emojiRes.json();
+        return emoji.imageUrl;
 
-    const url = emoji.emojiName;
-    // const url = emojis[emojiName];
-
-    return url
+    // EVERYemoji.find
+    } catch (error) {console.error(error);}
 }
 
 /*const data = new SlashCommmandBuilder()
