@@ -29,8 +29,8 @@ client.on(Events.ClientReady, () => {
         .addUserOption((option) => option.setName('emoji-name').setDescription('The name of the emoji to send (without colons)').setRequired(true));
     // const commandsToRegister = [emojiCommmand.toJSON()];
     // let commandsToRegister: [any] = [slackEmojiCommand.data.toJSON];
-    let commandsToRegister[] = [slackEmojiCommand];
-    const bodypayload = commandsToRegister.map(command => command.data.toJSON);
+    let commandsToRegister = [slackEmojiCommand.data.toJSON()];
+    // const bodypayload = commandsToRegister!.map(command => command.data.toJSON);
 
     try {client.application?.commands.set(commandsToRegister);} catch (error) {console.error(error);};
     /*client?.application?.commands.set([
@@ -51,10 +51,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
     try {
         if (interaction.commandName === 'slack-emoji') {
-            const requestedEmoji = interaction.options.getString('emoji-name');
+            try {
+                await slackEmojiCommand.execute(interaction);
+            } catch (error) {
+                await interaction.reply(`Hi ${interaction.user.username}, an error occurred & I don't have the image yet: ${error}`); 
+            }
+
+            /*const requestedEmoji = interaction.options.getString('emoji-name');
             if (!requestedEmoji) {return};
-            await getEmoji(requestedEmoji);
-            await interaction.reply(`Hi ${interaction.user.username}, I don't have the image yet`);
+            const reqURL = await getEmoji(requestedEmoji);
+            interaction.reply(`${reqURL}`);
+            interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `});*/
+
+            // await interaction.reply(`Hi ${interaction.user.username}, I don't have the image yet`);
         }
 
     } catch (error) {
@@ -65,8 +74,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 async function getEmoji(emojiName: string) {
     try {
         // const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
-        const emoji = await fetch(`https://cachet.hackclub.com/emojis/${emojiName}`);
-        
+        const emojiRes = await fetch(`https://cachet.hackclub.com/emojis/${emojiName}`);
+        const emoji = await emojiRes.json();
+        return emoji.imageURL;
 
     // EVERYemoji.find
     } catch (error) {console.error(error)}
