@@ -1,9 +1,10 @@
 import "@std/dotenv/load"; 
 // This is what makes .env work like this
 import process from "node:process";
-import { Client, SlashCommandBuilder, Events, GatewayIntentBits } from "discord.js";
+import { Client, SlashCommandBuilder, Events, GatewayIntentBits, CommandInteraction } from "discord.js";
 
 import "./commands/slack-emoji.ts";
+import slackEmojiCommand from "./commands/slack-emoji.ts";
 
 const DiscordToken = process.env.DISCORD_TOKEN;
 
@@ -26,7 +27,11 @@ client.on(Events.ClientReady, () => {
     const emojiCommmand = new SlashCommandBuilder()
         .setName('slack-emoji').setDescription('get +100 aura')
         .addUserOption((option) => option.setName('emoji-name').setDescription('The name of the emoji to send (without colons)').setRequired(true));
-    const commandsToRegister = [emojiCommmand.toJSON()];
+    // const commandsToRegister = [emojiCommmand.toJSON()];
+    // let commandsToRegister: [any] = [slackEmojiCommand.data.toJSON];
+    let commandsToRegister[] = [slackEmojiCommand];
+    const bodypayload = commandsToRegister.map(command => command.data.toJSON);
+
     try {client.application?.commands.set(commandsToRegister);} catch (error) {console.error(error);};
     /*client?.application?.commands.set([
         {
@@ -59,8 +64,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
 async function getEmoji(emojiName: string) {
     try {
-        const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
-
+        // const EVERYemoji = (await fetch('https://badger.hackclub.dev/emojis'));
+        const emoji = await fetch(`https://cachet.hackclub.com/emojis/${emojiName}`);
+        
 
     // EVERYemoji.find
     } catch (error) {console.error(error)}

@@ -5,7 +5,7 @@
 </div>
 
 # slackemoji-2discord
-A Discord bot to fetch Slack emojis from a *certain* Slack workspace and send the image.
+A Discord bot to fetch Slack emojis from a *certain* Slack workspace and send the image (easier).
 
 you know how you're so addicted to slack you try using emojis elsewhere??
 yea. me too. or just me. anyway.
