@@ -9,7 +9,7 @@ export default {
         const emojiName = interaction.options.getString('emoji-name');
         if (!emojiName) {return};
 
-        const reqURL = getEmoji(emojiName)
+        const reqURL = await getEmoji(emojiName);
         interaction.reply(`${reqURL}`);
         // interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `})
 
@@ -17,7 +17,7 @@ export default {
 }
 
 interface emojiResponse {
-    emojiUniqueName: string; emojiUrl: string;
+    emojiUniqueName: string; emojiUrl: string; alias: string;
 }
 
 async function getEmoji(emojiName: string) {

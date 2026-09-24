@@ -19,26 +19,19 @@ const client = new Client({
 // (client as any).commands = new Map();
 // (client as any).commands = [];
 
-client.on(Events.ClientReady, () => {
-    /*(client as any).commands.set('slack-emoji', {'slack-emoji', {
-        data: new SlashCommandBuilder().setName('slack-emoji')
-        .setDescription('get slack emoji +100 aura')
-    })*/
+client.on(Events.ClientReady, async () => {
+    /*(client as any).commands.set('slack-emoji', {'slack-emoji', {        data: new SlashCommandBuilder().setName('slack-emoji')        .setDescription('get slack emoji +100 aura')    })*/
     const emojiCommmand = new SlashCommandBuilder()
         .setName('slack-emoji').setDescription('get +100 aura')
-        .addUserOption((option) => option.setName('emoji-name').setDescription('The name of the emoji to send (without colons)').setRequired(true));
+        .addStringOption((option) => option.setName('emoji-name').setDescription('The name of the emoji to send (without colons)').setRequired(true));
     // const commandsToRegister = [emojiCommmand.toJSON()];
     // let commandsToRegister: [any] = [slackEmojiCommand.data.toJSON];
     let commandsToRegister = [slackEmojiCommand.data.toJSON()];
     // const bodypayload = commandsToRegister!.map(command => command.data.toJSON);
 
-    try {client.application?.commands.set(commandsToRegister);} catch (error) {console.error(error);};
-    /*client?.application?.commands.set([
-        {
-            name: 'slack-emoji',
-            description: 'get slack emoji +100 aura',
-        }
-    ])*/
+    // try {client.application?.commands.set(commandsToRegister);} catch (error) {console.error(error);};
+    try {await client.application?.commands.set([slackEmojiCommand.data.toJSON()]);} catch (error) {console.error(error);};
+    /*client?.application?.commands.set([    {            name: 'slack-emoji',            description: 'get slack emoji +100 aura',        }    ])*/
 //    client.application?.commands.create({name: 'slack-emoji',            description: 'get slack emoji +100 aura',});
 })
 
