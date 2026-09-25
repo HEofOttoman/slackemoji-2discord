@@ -15,6 +15,8 @@ This bot, which is installed as a Discord selfbot (using the Slack analogy), all
 
 This is simple enough, surprised it doesn't exist yet. Probably does and I don't know about it yet.
 
+In the future I might allow those Discord users to search through all the emojis somehow..
+
 ## Tech Stack
 Deno & Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man. Uses the [cachet](https://cachet.hackclub.com) endpoint to fetch emoji.
 
