@@ -7,11 +7,12 @@ export default {
     async execute(interaction: ChatInputCommandInteraction) {
         // await fetch("https://badger.hackclub.dev/emoji");
         const emojiName = interaction.options.getString('emoji-name');
-        if (!emojiName) {return};
+        if (!emojiName) {await interaction.reply(`That emoji name is invalid.`); return;};
 
         const reqURL = await getEmoji(emojiName);
-        interaction.reply(`${reqURL}`); // sends real thing as bot
-        interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
+        await interaction.reply(`${reqURL}`); // sends real thing as bot
+        // interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
+        await interaction.followUp({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
 
     }
 }
