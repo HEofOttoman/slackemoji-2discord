@@ -15,12 +15,16 @@ export default {
         const reqURL = await getEmoji(emojiName);
 
         if (channelSend) {
-            await interaction.reply(`${reqURL}`); // sends real thing as bot
+            await interaction.deferReply(); // more time to stop crash if > 3 secs
+            await interaction.editReply(`${reqURL}`); // sends real thing as bot
+            // await interaction.reply(`${reqURL}`); // sends real thing as bot
             await interaction.followUp({content: ` \`\`\`${reqURL}\`\`\` `, flags: [MessageFlags.Ephemeral]}); // sends thing as copyable text block
         } else {
-            await interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `, flags: [MessageFlags.Ephemeral]});
+            await interaction.deferReply({ephemeral: true});
+            await interaction.editReply({content: ` \`\`\`${reqURL}\`\`\` `});
+            // await interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `, flags: [MessageFlags.Ephemeral]});
         }
-
+        console.log(`Sent emoji ${emojiName} to ${interaction.user.username} in ${interaction.guild?.name}`) // Logging?
         // await interaction.reply(`${reqURL}`); // sends real thing as bot
         // interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
         // await interaction.followUp({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
