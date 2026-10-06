@@ -24,7 +24,7 @@ export default {
             await interaction.editReply({content: ` \`\`\`${reqURL}\`\`\` `});
             // await interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `, flags: [MessageFlags.Ephemeral]});
         }
-        console.log(`Sent emoji ${emojiName} to ${interaction.user.username} in ${interaction.guild?.name}`) // Logging?
+        // console.log(`Sent emoji ${emojiName} to ${interaction.user.username} in ${interaction.guild?.name}`) // Logging?
         // await interaction.reply(`${reqURL}`); // sends real thing as bot
         // interaction.reply({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block
         // await interaction.followUp({content: ` \`\`\`${reqURL}\`\`\` `}); // sends thing as copyable text block

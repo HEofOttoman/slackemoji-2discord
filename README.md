@@ -1,8 +1,8 @@
-<div align="center">
+<header align="center">
     <img src="https://emoji.slack-edge.com/T09V59WQY1E/loll/d8699d45d71dbd44.gif" />
     <h1>Slack Emoji Discord Fetch</h2>
     <h4>For your Slack addiction</h4>
-</div>
+</header>
 
 ## slackemoji-2discord
 
@@ -21,10 +21,13 @@ In the future I might allow those Discord users to search through all the emojis
 Deno & Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into the most niche issues known to man. Uses the [cachet](https://cachet.hackclub.com) endpoint to fetch emoji.
 
 ### Deployment
-1. Make a `.env` file and put your token in a variable named `DISCORD_TOKEN`. 
-2. Then, run:
-```deno run bot.ts```
+1. Clone the repository with `git clone https://github.com/HEofOttoman/slackemoji-2discord.git`
+2. Make a `.env` file and put your Discord token in a variable named `DISCORD_TOKEN`. 
+3. Run `deno install`
+4. Then, run:
+```deno run -allow-read --allow-env --allow-net bot.ts```
 
+Or run the dockerfile once I figure it out
 
 ### Usage
 
