@@ -25,15 +25,14 @@ Deno & Discord.JS, maybe [discordeno](https://discordeno.js.org) if I run into t
 2. Make a `.env` file and put your Discord token in a variable named `DISCORD_TOKEN`. 
 3. Run `deno install`
 4. Then, run:
-```deno run -allow-read --allow-env --allow-net bot.ts```
+```deno run --allow-read --allow-env --allow-net bot.ts```
 
-Or run the dockerfile once I figure it out
+Or run the Dockerfile which should work
 
 ### Usage
+Due to Discord TOS prohibiting the use of a user token to send messages *as* a user, this bot is not a true selfbot akin to Slack, but uses a simple quick workaround.
 
-Okay I learnt I can't send messages *as* a user so you'll have to copy the link of the image fetched by the `/` command.
+1. Run command the `/slack-emoji` with the name on it. You also have the option of sending it to channel (which can be deleted).
+2. Copy the link that shows up for the requested emoji and send it on your own!
 
-1. Run command, `/slack-emoji`, name on it
-2. Copy the link that shows up for it
-
->Made by me with DiscordJS docs with more difficulty than it should ![why](https://emoji.slack-edge.com/T09V59WQY1E/noooovanish/1d5ee9fd30729823.png)
+>Made by me with DiscordJS docs (ft. Google) with more difficulty than it should ![why](https://emoji.slack-edge.com/T09V59WQY1E/pf/d2b4e41a039d2ec2.png)

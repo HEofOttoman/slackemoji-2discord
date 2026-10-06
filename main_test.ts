@@ -1,3 +1,4 @@
+// Ignore default test file
 import { assertEquals } from "@std/assert";
 import { add } from "./main.ts";
 
