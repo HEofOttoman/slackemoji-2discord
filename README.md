@@ -1,20 +1,29 @@
-<header align="center">
+<div align="center">
     <img src="https://emoji.slack-edge.com/T09V59WQY1E/loll/d8699d45d71dbd44.gif" />
     <h1>Slack Emoji Discord Fetch</h2>
     <h4>For your Slack addiction</h4>
-</header>
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/yayayayayay/203666b7424ee7a7.gif">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/ultrafastparrot/40d59f6df4da8934.gif">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/canberraisbetterthansydney/5f80ca59f3702ffd.png">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/skulk/361b0d7b25240b66.png">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/kc-sob/c00fdaa163db4d8c.png" alt="kc-sob">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/iguessbro/11853f538635a3c9.png">
+    <img src="https://emoji.slack-edge.com/T09V59WQY1E/uuh-cat/c805b158336e8319.gif">
+</div>
 
 ## slackemoji-2discord
-![ultrafastparrot](https://emoji.slack-edge.com/T09V59WQY1E/ultrafastparrot/40d59f6df4da8934.gif)
+<!-- ![ultrafastparrot](https://emoji.slack-edge.com/T09V59WQY1E/ultrafastparrot/40d59f6df4da8934.gif)
 ![canberra-is-better-than-sydney](https://emoji.slack-edge.com/T09V59WQY1E/canberraisbetterthansydney/5f80ca59f3702ffd.png)
 ![osob](https://emoji.slack-edge.com/T09V59WQY1E/osob/ad86eafb7a517986.png)
 ![kc-sob](https://emoji.slack-edge.com/T09V59WQY1E/kc-sob/c00fdaa163db4d8c.png)
 ![iguessbro](https://emoji.slack-edge.com/T09V59WQY1E/iguessbro/11853f538635a3c9.png)
 ![skulk](https://emoji.slack-edge.com/T09V59WQY1E/skulk/361b0d7b25240b66.png)
 ![yayy](https://emoji.slack-edge.com/T09V59WQY1E/yayayayayay/203666b7424ee7a7.gif)
-![uuh-cat](https://emoji.slack-edge.com/T09V59WQY1E/uuh-cat/c805b158336e8319.gif)
+![uuh-cat](https://emoji.slack-edge.com/T09V59WQY1E/uuh-cat/c805b158336e8319.gif) -->
 
 A Discord bot to fetch Slack emojis from a *certain* Slack workspace and send the image (easier).
+
+![working screenshot](demo.png)
 
 you know how you're so addicted to slack you try using emojis elsewhere??
 yea. me too. or just me. anyway.
